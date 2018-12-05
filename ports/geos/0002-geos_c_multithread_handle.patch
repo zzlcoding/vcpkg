@@ -1,0 +1,60 @@
+diff --git a/capi/geos_ts_c.cpp b/capi/geos_ts_c.cpp
+index 7835939..1db0952 100644
+--- a/capi/geos_ts_c.cpp
++++ b/capi/geos_ts_c.cpp
+@@ -145,7 +145,7 @@ typedef std::auto_ptr<Geometry> GeomAutoPtr;
+ typedef struct GEOSContextHandle_HS
+ {
+     const GeometryFactory *geomFactory;
+-    char msgBuffer[1024];
++    //char msgBuffer[1024];
+     GEOSMessageHandler noticeMessageOld;
+     GEOSMessageHandler_r noticeMessageNew;
+     void *noticeData;
+@@ -166,7 +166,7 @@ typedef struct GEOSContextHandle_HS
+       errorMessageNew(0),
+       errorData(0)
+     {
+-      memset(msgBuffer, 0, sizeof(msgBuffer));
++      //memset(msgBuffer, 0, sizeof(msgBuffer));
+       geomFactory = GeometryFactory::getDefaultInstance();
+       WKBOutputDims = 2;
+       WKBByteOrder = getMachineByteOrder();
+@@ -225,6 +225,9 @@ typedef struct GEOSContextHandle_HS
+         return;
+       }
+ 
++	  char *msgBuffer = new char[1024];
++	  memset(msgBuffer, 0, 1024);
++
+       va_list args;
+       va_start(args, fmt);
+       int result = vsnprintf(msgBuffer, sizeof(msgBuffer) - 1, fmt.c_str(), args);
+@@ -237,6 +240,8 @@ typedef struct GEOSContextHandle_HS
+           noticeMessageNew(msgBuffer, noticeData);
+         }
+       }
++
++	  delete[]msgBuffer;
+     }
+ 
+     void
+@@ -246,6 +251,9 @@ typedef struct GEOSContextHandle_HS
+         return;
+       }
+ 
++	  char *msgBuffer = new char[1024];
++	  memset(msgBuffer, 0, 1024);
++
+       va_list args;
+       va_start(args, fmt);
+       int result = vsnprintf(msgBuffer, sizeof(msgBuffer) - 1, fmt.c_str(), args);
+@@ -258,6 +266,8 @@ typedef struct GEOSContextHandle_HS
+           errorMessageNew(msgBuffer, errorData);
+         }
+       }
++
++	  delete[]msgBuffer;
+     }
+ } GEOSContextHandleInternal_t;
+ 

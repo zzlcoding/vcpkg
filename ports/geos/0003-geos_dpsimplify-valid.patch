@@ -1,0 +1,24 @@
+diff --git a/src/simplify/DouglasPeuckerSimplifier.cpp b/src/simplify/DouglasPeuckerSimplifier.cpp
+index 0657645..89abfc6 100644
+--- a/src/simplify/DouglasPeuckerSimplifier.cpp
++++ b/src/simplify/DouglasPeuckerSimplifier.cpp
+@@ -136,7 +136,8 @@ DPTransformer::transformPolygon(
+ 		return roughGeom;
+ 	}
+ 
+-	return createValidArea(roughGeom.get());
++	return roughGeom;
++	// return createValidArea(roughGeom.get());
+ }
+ 
+ Geometry::AutoPtr
+@@ -148,7 +149,8 @@ DPTransformer::transformMultiPolygon(
+ 	std::cerr << "DPTransformer::transformMultiPolygon(MultiPolygon " << geom << ", Geometry " << parent << ");" << std::endl;
+ #endif
+ 	Geometry::AutoPtr roughGeom(GeometryTransformer::transformMultiPolygon(geom, parent));
+-        return createValidArea(roughGeom.get());
++	return roughGeom;
++        // return createValidArea(roughGeom.get());
+ }
+ 
+ /************************************************************************/

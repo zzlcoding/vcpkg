@@ -11,7 +11,10 @@ vcpkg_extract_source_archive_ex(
     OUT_SOURCE_PATH SOURCE_PATH
     ARCHIVE ${ARCHIVE}
     REF ${GEOS_VERSION}
-    PATCHES geos_c-static-support.patch
+    PATCHES
+    geos_c-static-support.patch
+    0002-geos_c_multithread_handle.patch
+    # 0003-geos_dpsimplify-valid.patch
 )
 
 # NOTE: GEOS provides CMake as optional build configuration, it might not be actively

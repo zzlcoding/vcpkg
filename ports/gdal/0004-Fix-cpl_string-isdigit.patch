@@ -1,0 +1,22 @@
+diff --git a/port/cpl_string.cpp b/port/cpl_string.cpp
+index 6904ebc..ad740f9 100644
+--- a/port/cpl_string.cpp
++++ b/port/cpl_string.cpp
+@@ -2594,7 +2594,7 @@ CPLValueType CPLGetValueType( const char* pszValue )
+ 
+     for( ; *pszValue != '\0'; ++pszValue )
+     {
+-        if( isdigit( *pszValue))
++        if( isdigit(static_cast<unsigned char>(*pszValue)))
+         {
+             bIsLastCharExponent = false;
+             bFoundMantissa = true;
+@@ -2636,7 +2636,7 @@ CPLValueType CPLGetValueType( const char* pszValue )
+             if( !bFoundMantissa )
+                 return CPL_VALUE_STRING;
+             if( !(pszValue[1] == '+' || pszValue[1] == '-' ||
+-                  isdigit(pszValue[1])) )
++                  isdigit(static_cast<unsigned char>(pszValue[1]))) )
+                 return CPL_VALUE_STRING;
+ 
+             bIsReal = true;

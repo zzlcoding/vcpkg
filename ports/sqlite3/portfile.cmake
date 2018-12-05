@@ -27,8 +27,10 @@ vcpkg_configure_cmake(
     PREFER_NINJA
     OPTIONS
         -DSQLITE3_SKIP_TOOLS=${SQLITE3_SKIP_TOOLS}
+        -DSQLITE_ENABLE_RTREE=1
     OPTIONS_DEBUG
         -DSQLITE3_SKIP_TOOLS=ON
+        -DSQLITE_ENABLE_RTREE=1
 )
 
 vcpkg_install_cmake()

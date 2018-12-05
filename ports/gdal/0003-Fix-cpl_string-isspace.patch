@@ -1,0 +1,38 @@
+diff --git a/port/cpl_string.cpp b/port/cpl_string.cpp
+index c02d493..6904ebc 100644
+--- a/port/cpl_string.cpp
++++ b/port/cpl_string.cpp
+@@ -1482,9 +1482,9 @@ int CPLsscanf( const char* str, CPL_SCANF_FORMAT_STRING(const char* fmt), ... )
+                 break;
+             }
+         }
+-        else if( isspace(*fmt) )
++        else if( isspace(static_cast<unsigned char>(*fmt)) )
+         {
+-            while( *str != '\0' && isspace(*str) )
++            while( *str != '\0' && isspace(static_cast<unsigned char>(*str)) )
+                 ++str;
+         }
+         else if( *str != *fmt )
+@@ -2575,7 +2575,7 @@ CPLValueType CPLGetValueType( const char* pszValue )
+     const char* pszValueInit = pszValue;
+ 
+     // Skip leading spaces.
+-    while( isspace( *pszValue ) )
++    while( isspace(static_cast<unsigned char>(*pszValue) ) )
+         ++pszValue;
+ 
+     if( *pszValue == '\0' )
+@@ -2599,10 +2599,10 @@ CPLValueType CPLGetValueType( const char* pszValue )
+             bIsLastCharExponent = false;
+             bFoundMantissa = true;
+         }
+-        else if( isspace( *pszValue ) )
++        else if( isspace(static_cast<unsigned char>(*pszValue) ) )
+         {
+             const char* pszTmp = pszValue;
+-            while( isspace( *pszTmp ) )
++            while( isspace(static_cast<unsigned char>(*pszTmp) ) )
+                 ++pszTmp;
+             if( *pszTmp == 0 )
+                 break;

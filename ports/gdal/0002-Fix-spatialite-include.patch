@@ -1,0 +1,39 @@
+diff --git a/ogr/ogrsf_frmts/sqlite/ogr_sqlite.h b/ogr/ogrsf_frmts/sqlite/ogr_sqlite.h
+index 0f0186b..126ae18 100644
+--- a/ogr/ogrsf_frmts/sqlite/ogr_sqlite.h
++++ b/ogr/ogrsf_frmts/sqlite/ogr_sqlite.h
+@@ -55,7 +55,7 @@
+     / IMPORTANT NOTICE: using AMALAGATION is only
+     / useful on Windows (to skip DLL hell related oddities)
+     */
+-    #include <spatialite/sqlite3.h>
++    #include <spatialite/sqlite.h>
+   #else
+     /*
+     / You MUST NOT use AMALGAMATION on Linux or any
+diff --git a/ogr/ogrsf_frmts/sqlite/ogrsqliteapiroutines.c b/ogr/ogrsf_frmts/sqlite/ogrsqliteapiroutines.c
+index 3b11edd..ec0db92 100644
+--- a/ogr/ogrsf_frmts/sqlite/ogrsqliteapiroutines.c
++++ b/ogr/ogrsf_frmts/sqlite/ogrsqliteapiroutines.c
+@@ -44,7 +44,7 @@
+     / IMPORTANT NOTICE: using AMALAGATION is only
+     / useful on Windows (to skip DLL hell related oddities)
+     */
+-    #include <spatialite/sqlite3.h>
++    #include <spatialite/sqlite.h>
+   #else
+     /*
+     / You MUST NOT use AMALGAMATION on Linux or any
+diff --git a/ogr/ogrsf_frmts/sqlite/test_load_virtual_ogr.c b/ogr/ogrsf_frmts/sqlite/test_load_virtual_ogr.c
+index 24219a0..42fae8e 100644
+--- a/ogr/ogrsf_frmts/sqlite/test_load_virtual_ogr.c
++++ b/ogr/ogrsf_frmts/sqlite/test_load_virtual_ogr.c
+@@ -38,7 +38,7 @@
+     / IMPORTANT NOTICE: using AMALAGATION is only
+     / useful on Windows (to skip DLL hell related oddities)
+     */
+-    #include <spatialite/sqlite3.h>
++    #include <spatialite/sqlite.h>
+   #else
+     /*
+     / You MUST NOT use AMALGAMATION on Linux or any
